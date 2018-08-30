@@ -7,12 +7,17 @@ class BirthdayForm extends Component {
         super(props)
 
         this.state = {
-            startDate: moment()
+            startDate: moment(),
+            formCompleted: false
         }
     }
 
     handleChange = (date) => {
         this.setState({ startDate: date });
+    }
+
+    handleGenerate = () => {
+        this.setState({ formCompleted: true });
     }
 
     render() {
@@ -22,6 +27,10 @@ class BirthdayForm extends Component {
                     selected={ this.state.startDate }
                     onChange={ this.handleChange }
                />
+               <a onClick={ this.handleGenerate }>Generate Countdown</a>
+               {
+                   this.state.formCompleted ? <h2>Show countdown</h2> : <h2>Don't show countdown</h2>
+               }
             </div>
         );
     }
