@@ -8,8 +8,9 @@ import reducers from './reducers';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
-import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/css/bootstrap.css';
 import './style/main.scss';
+import 'react-datepicker/dist/react-datepicker.css';
 
 function main() {
   ReactDOM.render(
