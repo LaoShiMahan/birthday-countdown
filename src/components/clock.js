@@ -4,24 +4,44 @@ class Clock extends Component {
     constructor(props) {
         super(props)
 
+
         this.state = {
-            timeRemaining: {}
+            timeRemaining: this.getTimeRemaining(this.props.birthdayFormState.startDate.toString())
         }
     }
 
     componentDidMount() {
         this.birthday = this.props.birthdayFormState.startDate.toString();
-        alert(this.birthday);
+    }
+
+    getTimeRemaining = (birthday) => {
+
+        let bday = new Date(birthday);
+        let today = new Date();
+
+        let distance = bday.getTime() - today.getTime()
+
+        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        return {
+            'days': days,
+            'hours': hours,
+            'minutes': minutes,
+            'seconds': seconds
+        }
     }
 
     render() {
         const data = this.state.timeRemaining;
         return (
             <div>
-                <label>DAYS {data.days}</label>
-                <label>HOURS {data.hours}</label>
-                <label>MINUTES {data.minutes}</label>
-                <label>SECONDS {data.seconds}</label>
+                <div>DAYS {data.days}</div>
+                <div>HOURS {data.hours}</div>
+                <div>MINUTES {data.minutes}</div>
+                <div>SECONDS {data.seconds}</div>
             </div>
         ); 
     }
