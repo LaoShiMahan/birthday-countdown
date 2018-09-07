@@ -21,11 +21,26 @@ class Clock extends Component {
     }
 
     getTimeRemaining = (birthday) => {
-
         let bday = new Date(birthday);
         let today = new Date();
+        let birthMonth = bday.getMonth();
+        let currentMonth = today.getMonth();
 
-        let distance = bday.getTime() - today.getTime()
+        if (birthMonth > currentMonth) {
+            bday.setFullYear(today.getFullYear());
+        } else if (birthMonth < currentMonth) {
+            bday.setFullYear(today.getFullYear() + 1);
+        } else if (birthMonth === currentMonth) {
+            let birthDay = bday.getDate();
+            let currentDay = today.getDate();
+            if (birthDay > currentDay) {
+                bday.setFullYear(today.getFullYear());
+            } else if (birthDay < currentDay) {
+                bday.setFullYear(today.getFullYear() + 1);
+            }
+        }
+
+        let distance = bday.getTime() - today.getTime();
 
         let days = Math.floor(distance / (1000 * 60 * 60 * 24));
         let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -40,14 +55,28 @@ class Clock extends Component {
         }
     }
 
+    getAge = (birthday) => {
+        let bday = new Date(birthday);
+        let today = new Date();
+        let distance = today.getTime() - bday.getTime();
+        let daysOld = Math.floor(distance / (1000 * 60 * 60 * 24));
+        let yearsOld = Number(daysOld / 365).toFixed(0);
+        return yearsOld;
+    }
+
     render() {
         const data = this.state.timeRemaining;
         return (
             <div>
-                <div>DAYS {data.days}</div>
-                <div>HOURS {data.hours}</div>
-                <div>MINUTES {data.minutes}</div>
-                <div>SECONDS {data.seconds}</div>
+                <div>
+                    <div>DAYS {data.days}</div>
+                    <div>HOURS {data.hours}</div>
+                    <div>MINUTES {data.minutes}</div>
+                    <div>SECONDS {data.seconds}</div>
+                </div>
+                <div>
+                    <h4>remaining until you are {this.getAge(this.birthday)}</h4>
+                </div>
             </div>
         ); 
     }
