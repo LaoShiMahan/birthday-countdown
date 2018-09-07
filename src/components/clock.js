@@ -20,6 +20,14 @@ class Clock extends Component {
         }
     }
 
+    componentWillReceiveProps = (nextProps) => {
+        console.log(JSON.stringify(nextProps));
+    }
+
+    componentWillUnmount = () => {
+        clearInterval(this.timer);
+    }
+
     getTimeRemaining = (birthday) => {
         let bday = new Date(birthday);
         let today = new Date();
@@ -37,6 +45,8 @@ class Clock extends Component {
                 bday.setFullYear(today.getFullYear());
             } else if (birthDay < currentDay) {
                 bday.setFullYear(today.getFullYear() + 1);
+            } else if (birthDay === currentDay) {
+                return 0;
             }
         }
 
@@ -64,19 +74,27 @@ class Clock extends Component {
         return yearsOld;
     }
 
-    render() {
+    render = () => {
         const data = this.state.timeRemaining;
         return (
             <div>
-                <div>
-                    <div>DAYS {data.days}</div>
-                    <div>HOURS {data.hours}</div>
-                    <div>MINUTES {data.minutes}</div>
-                    <div>SECONDS {data.seconds}</div>
-                </div>
-                <div>
-                    <h4>remaining until you are {this.getAge(this.birthday)}</h4>
-                </div>
+                {
+                    this.state.timeRemaining === 0 ?
+                        <div>
+                            <h1>Happy Birthday!</h1>
+                        </div> :
+                        <div>
+                            <div>
+                                <div>DAYS {data.days}</div>
+                                <div>HOURS {data.hours}</div>
+                                <div>MINUTES {data.minutes}</div>
+                                <div>SECONDS {data.seconds}</div>
+                            </div>
+                            <div>
+                                <h4>remaining until you are {this.getAge(this.birthday)}</h4>
+                            </div>
+                        </div>
+                }
             </div>
         ); 
     }
