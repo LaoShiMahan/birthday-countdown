@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Datepicker from 'react-datepicker';
 import moment from 'moment';
+import Clock from './clock';
 
 class BirthdayForm extends Component {
     constructor(props) {
@@ -23,14 +24,19 @@ class BirthdayForm extends Component {
     render() {
         return (
             <div>
-               <Datepicker
-                    selected={ this.state.startDate }
-                    onChange={ this.handleChange }
-               />
-               <a onClick={ this.handleGenerate }>Generate Countdown</a>
-               {
-                   this.state.formCompleted ? <h2>Show countdown</h2> : <h2>Don't show countdown</h2>
-               }
+                {
+                    this.state.formCompleted ?
+                        <div>
+                            <Clock birthdayFormState={this.state} />
+                        </div> :
+                        <div>
+                            <Datepicker
+                                selected={this.state.startDate}
+                                onChange={this.handleChange}
+                            />
+                            <a onClick={this.handleGenerate}>Generate Countdown</a>
+                        </div>
+                }
             </div>
         );
     }
