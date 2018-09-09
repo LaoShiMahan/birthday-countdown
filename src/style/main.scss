@@ -1,3 +1,6 @@
+@import './base';
+@import './header';
+
 html {
     font-size: 62.5%; // 1rem is 10px
 }
@@ -7,7 +10,7 @@ html {
 *::before {
     margin: 0;
     padding: 0;
-    box-sizing: inherit;
+    box-sizing: border-box;
     font-family: 'montserrat';
 }
 
@@ -19,10 +22,11 @@ body {
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     -webkit-tap-highlight-color: transparent;
+
+    font-family: var(--montserrat);
 }
 
 .app {
-    margin-top: 2rem;
     display: grid;
     justify-items: center;
 }

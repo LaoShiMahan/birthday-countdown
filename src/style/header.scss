@@ -1,0 +1,25 @@
+@mixin header-background($clip-path, $color: var(--blue-primary)) {
+    width: 100vw;
+    height: 100vh;
+    background-color: $color;
+    clip-path: $clip-path;
+}
+
+h1 {
+    color: white;
+    padding: 75px;
+    font-size: 18px;
+    font-weight: 100;
+    line-height: 22px;
+    z-index: 1;
+    position: absolute;
+}
+
+.header__skew {
+    @include header-background(polygon(0 100%, 0 0, 50% 0, 16% 100%), var(--blue-primary));
+}
+
+.header__subskew {
+    @include header-background(polygon(0 100%, 0 0, 0 40%, 16% 100%), var(--blue-secondary));
+
+}
