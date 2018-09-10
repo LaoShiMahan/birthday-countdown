@@ -1,34 +1,44 @@
 .countdown {
+    @include center-item;
     width: 100vw;
     height: 100vh;
     background-color: var(--gray-primary);
     color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     clip-path: polygon(14.4% 50%, 92% 50%, 85.6% 70%, 8% 70%);
 }
 
 .countdown__clock {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: 20%;
-    width: 71.2%;
+    @include clock-dimensions;
+    @include center-item($pull-y: 0);
     padding: 0; 
-    transform: translateX(-50%);
-
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
 .change-date {
+    @include center-item($top: 45%, $left: 20%);
     color: white !important;
-    position: absolute;
-    left: 20%;
-    top: 45%;
     font-size: 18px;
     font-weight: 100;
+}
+
+.message-container {
+    @include clock-dimensions;
+    @include center-item($pull-y: 0);
+    margin-top: 10px;
+}
+
+.message-container__title {
+    @include center-item($top: 5%, $left: 10%, $pull-x: 0, $pull-y: 0);
+    font-family: var(--roboto-condensed);
+    color: var(--yellow-secondary);
+    font-size: 22px;
+}
+
+.message-container__message {
+    @include center-item($top: 15%, $left: 10%, $pull-x: 0, $pull-y: 0);
+    font-family: var(--roboto-condensed);
+    font-size: 90px;
+    font-weight: bold;
 }
