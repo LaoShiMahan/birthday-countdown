@@ -14,25 +14,31 @@ class BirthdayForm extends Component {
     }
 
     handleChangeDate = () => {
-        this.setState({ formCompleted: false });
+        this.setState(() => {
+            return ({ formCompleted: false });
+        });
     }
 
     handleChange = (date) => {
-        this.setState({ startDate: date });
+        this.setState(() => {
+            return ({ startDate: date });
+        });
     }
 
     handleGenerate = () => {
-        this.setState({ formCompleted: true });
+        this.setState(() => {
+            return ({ formCompleted: true });
+        });
     }
 
     render() {
         return (
-            <div className='birthday-form__wrapper'>
+            <div>
                 {
                     this.state.formCompleted ?
                         <div>
                             <Clock birthdayFormState={this.state} />
-                            <a onClick={this.handleChangeDate}>Change Date</a>
+                            <a className='change_date' onClick={this.handleChangeDate}>Change Date</a>
                         </div> :
                         <div>
                             <Datepicker

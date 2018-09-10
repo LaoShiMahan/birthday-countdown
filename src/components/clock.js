@@ -15,8 +15,9 @@ class Clock extends Component {
     componentDidMount = () => {
         if (this.timer === 0) {
             this.timer = setInterval(() => {
-                const timeRemaining = this.getTimeRemaining(this.birthday)
-                this.setState({ timeRemaining: timeRemaining })
+                this.setState(() => {
+                    return {timeRemaining: this.getTimeRemaining(this.birthday)}
+                })
             }, 1000);
         }
     }
@@ -97,11 +98,11 @@ class Clock extends Component {
                             <h1>Happy Birthday!</h1>
                         </div> :
                         <div>
-                            <ul>
-                                <li>DAYS <p>{ data.days }</p></li>
-                                <li>HOURS <p>{ data.hours }</p></li>
-                                <li>MINUTES <p>{ data.minutes }</p></li>
-                                <li>SECONDS <p>{ data.seconds }</p></li>
+                            <ul className='countdown__clock'>
+                                <li>DAYS<p>{ data.days }</p></li>
+                                <li>HOURS<p>{ data.hours }</p></li>
+                                <li>MINUTES<p>{ data.minutes }</p></li>
+                                <li>SECONDS<p>{ data.seconds }</p></li>
                             </ul>
                             <div>
                                 { this.renderMessage() }
