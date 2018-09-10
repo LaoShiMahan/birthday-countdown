@@ -27,7 +27,7 @@ class BirthdayForm extends Component {
 
     render() {
         return (
-            <div>
+            <div className='birthday-form__wrapper'>
                 {
                     this.state.formCompleted ?
                         <div>
