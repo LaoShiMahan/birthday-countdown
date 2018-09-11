@@ -14,6 +14,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    list-style-type: none;
 }
 
 .change-date {
@@ -41,4 +42,22 @@
     font-family: var(--roboto-condensed);
     font-size: 90px;
     font-weight: bold;
+}
+
+.countdown__clock li {
+    list-style: none;
+    color: var(--yellow-secondary);
+    font-size: 22px;
+    font-family: var(--roboto-condensed);
+    padding-top: 20px;
+}
+
+.countdown__clock p {
+    color: white;
+    font-size: 90px;
+    line-height: 115px;
+}
+
+.until-container {
+    @include center-item($top: 85%, $left: 50%);
 }
