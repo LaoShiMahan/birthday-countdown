@@ -1,3 +1,14 @@
+.large-date {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    color: var(--gray-secondary);
+    font-size: 120px;
+    font-family: var(--roboto-condensed);
+    font-weight: bold;
+    cursor: default;
+}
+
 .countdown {
     @include center-item;
     width: 100vw;
@@ -5,6 +16,7 @@
     background-color: var(--gray-primary);
     color: white;
     clip-path: polygon(14.4% 50%, 92% 50%, 85.6% 70%, 8% 70%);
+    cursor: default;
 }
 
 .countdown__clock {
@@ -22,6 +34,7 @@
     color: white !important;
     font-size: 18px;
     font-weight: 100;
+    cursor: pointer;
 }
 
 .message-container {
@@ -42,6 +55,7 @@
     font-family: var(--roboto-condensed);
     font-size: 90px;
     font-weight: bold;
+    margin-top: 10px;
 }
 
 .countdown__clock li {
@@ -60,4 +74,6 @@
 
 .until-container {
     @include center-item($top: 85%, $left: 50%);
+    font-size: 22px;
+    cursor: default;
 }

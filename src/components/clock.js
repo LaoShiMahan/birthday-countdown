@@ -76,6 +76,11 @@ class Clock extends Component {
         return yearsOld;
     }
 
+    renderDate = (birthday) => {
+        let bday = new Date(birthday);
+        return <div>{ bday.getMonth() + 1 }/{ bday.getDate() }</div>
+    }
+
     renderMessage = () => {
         if (this.noBirthYear) {
             return (
@@ -101,6 +106,9 @@ class Clock extends Component {
                             </div>
                         </div> :
                         <div>
+                            <div className='large-date'>
+                                { this.renderDate(this.birthday) }
+                            </div>
                             <div className='countdown'>
                                 <ul className='countdown__clock'>
                                     <li>DAYS<p>{ data.days }</p></li>
