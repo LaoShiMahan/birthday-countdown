@@ -3,6 +3,7 @@
 }
 
 .date-picker-container {
+        @include center-item($top: 0, $left: 0, $pull-x: -25%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -10,7 +11,6 @@
 }
 
 .date-picker {
-    @include center-item($top: 0, $left: 0, $pull-x: -25%);
     border: none;
     border-bottom: 1px solid var(--yellow-primary);
     text-align: center;
@@ -32,4 +32,26 @@
 .clock-container {
     width: 100vw;
     height: 100vh;
+}
+
+.submit-container {
+    transform: skew(-30deg);
+    height: 50px;
+    width: 300px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 1.25em;
+    margin-top: 42px;
+    background-color: var(--blue-primary);
+}
+
+.submit-container input {
+    transform: skew(30deg);
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 200;
 }
