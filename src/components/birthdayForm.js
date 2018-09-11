@@ -14,21 +14,18 @@ class BirthdayForm extends Component {
     }
 
     handleChangeDate = () => {
-        this.setState({ formCompleted: false });
-        // this.setState((prevState, props) => {
-        //     return ({ formCompleted: !prevState.formCompleted });
-        // });
-    }
-
-    handleChange = (date) => {
-        this.setState(() => {
-            return ({ startDate: date });
+        this.setState((prevState) => {
+            return ({ formCompleted: !prevState.formCompleted });
         });
     }
 
+    handleChange = (date) => {
+        this.setState({ startDate: date });
+    }
+
     handleGenerate = (event) => {
-        this.setState(() => {
-            return ({ formCompleted: true });
+        this.setState((prevState) => {
+            return ({ formCompleted: !prevState.formCompleted });
         });
         event.preventDefault();
     }
