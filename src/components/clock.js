@@ -72,7 +72,7 @@ class Clock extends Component {
         let today = new Date();
         let distance = today.getTime() - bday.getTime();
         let daysOld = Math.floor(distance / (1000 * 60 * 60 * 24));
-        let yearsOld = Number(daysOld / 365).toFixed(0);
+        let yearsOld = Math.floor(Number(daysOld / 365));
         return yearsOld;
     }
 
